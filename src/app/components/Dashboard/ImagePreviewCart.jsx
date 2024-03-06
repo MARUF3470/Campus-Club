@@ -11,7 +11,11 @@ const ImagePreviewCart = ({ imgURL, callback }) => {
       }}
     >
       <div className="text-right mr-2">
-        <button size="icon" className="mt-2 btn btn-circle" onClick={callback}>
+        <button
+          size="icon"
+          className="mt-2 btn btn-circle btn-outline btn-error btn-xs"
+          onClick={callback}
+        >
           X
         </button>
       </div>

@@ -28,7 +28,7 @@ const AddEventPage = () => {
   return (
     <div className="w-[95%] mx-auto">
       <h1 className="text-center text-2xl my-5">Add New Event</h1>
-      <form className="w-1/2 flex flex-col gap-2 mx-auto">
+      <form className="w-11/12 lg:w-1/2 flex flex-col gap-2 mx-auto">
         <label className="input input-bordered flex items-center text-sm gap-2">
           Event Title
           <input
@@ -47,7 +47,7 @@ const AddEventPage = () => {
           <input type="text" className="grow" placeholder="College Campus" />
         </label>
         <label className="input input-bordered flex items-center text-sm w-fit gap-2">
-          Event Time and Date
+          <span className="hidden lg:block">Event Time and Date</span>
           <Datetime
             onChange={setSelectedDate}
             value={selectedDate}
