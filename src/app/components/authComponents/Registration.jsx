@@ -1,14 +1,77 @@
+"use client";
+import { useRouter } from "next/navigation";
 import React from "react";
-
+import { useForm } from "react-hook-form";
+import toast, { Toaster } from "react-hot-toast";
 const Registration = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const router = useRouter();
+  const onSubmit = async (data) => {
+    console.log(data);
+    if (data.password !== data.cpassword) {
+      return toast.error("Confirm Password does not match with password");
+    }
+    if (data.password.length !== 8) {
+      return toast.error("Password is should be atleast 8 characters");
+    }
+    const response = await fetch("/api/user", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        username: data.username,
+        isAdmin: false,
+      }),
+    });
+    if (response.ok) {
+      toast.success("Registration done");
+      reset();
+      return router.push("/authentication");
+    } else {
+      return toast.error("Registration Failed");
+    }
+  };
   return (
     <div>
+      <Toaster />
       <h6 className="text-center font-medium mb-5">Registration</h6>
-      <form className="w-11/12 lg:w-1/2 flex flex-col gap-2 mx-auto">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-11/12 lg:w-1/2 flex flex-col gap-2 mx-auto"
+      >
         <label className="input input-bordered flex items-center text-sm gap-2">
           Name
-          <input type="text" className="grow" placeholder="Maruf Hossain" />
+          <input
+            type="text"
+            {...register("name", { required: "Enter Your Name." })}
+            className="grow"
+            placeholder="Maruf Hossain"
+          />
         </label>
+        {errors.name && (
+          <p className="text-red-400 text-xs mt-1">{errors.name.message}</p>
+        )}
+        <label className="input input-bordered flex items-center text-sm gap-2">
+          User Name
+          <input
+            type="text"
+            {...register("username", { required: "Enter Your UserName." })}
+            className="grow"
+            placeholder="Maruf Hossain"
+          />
+        </label>
+        {errors.username && (
+          <p className="text-red-400 text-xs mt-1">{errors.username.message}</p>
+        )}
         <label className="input input-bordered flex items-center text-sm gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -20,8 +83,16 @@ const Registration = () => {
             <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
           </svg>
           Email
-          <input type="text" className="grow" placeholder="xyz@gmail.com" />
+          <input
+            type="text"
+            className="grow"
+            {...register("email", { required: "Enter Your Email." })}
+            placeholder="xyz@gmail.com"
+          />
         </label>
+        {errors.email && (
+          <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>
+        )}
         <label className="input input-bordered flex items-center text-sm gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -36,17 +107,37 @@ const Registration = () => {
             />
           </svg>
           Password
-          <input type="password" className="grow" placeholder="********" />
+          <input
+            type="password"
+            {...register("password", { required: "Give a password." })}
+            className="grow"
+            placeholder="********"
+          />
         </label>
+        {errors.password && (
+          <p className="text-red-400 text-xs mt-1">{errors.password.message}</p>
+        )}
         <label className="input input-bordered flex items-center text-sm gap-2">
           Confirm Password
-          <input type="password" className="grow" placeholder="********" />
+          <input
+            type="password"
+            {...register("cpassword", {
+              required: "Retype your password here.",
+            })}
+            className="grow"
+            placeholder="********"
+          />
         </label>
+        {errors.cpassword && (
+          <p className="text-red-400 text-xs mt-1">
+            {errors.cpassword.message}
+          </p>
+        )}
         <div className="flex justify-center items-center">
           <input
             type="submit"
             className="btn btn-outline w-1/2"
-            value="Login"
+            value="Registration"
           />
         </div>
       </form>
