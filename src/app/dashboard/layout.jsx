@@ -21,6 +21,11 @@ const layout = ({ children }) => {
               Member Management
             </Link>
           </div>
+          <div className="relative -bottom-24 flex justify-center items-center">
+            <Link href="/" className="">
+              Back To Home
+            </Link>
+          </div>
         </div>
         <div className="col-span-3 lg:col-span-4">{children}</div>
       </div>
