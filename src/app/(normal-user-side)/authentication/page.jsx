@@ -1,7 +1,10 @@
 import Login from "@/app/components/authComponents/Login";
 import Registration from "@/app/components/authComponents/Registration";
 import React from "react";
-
+export const metadata = {
+  title: "Authentication",
+  description: "Authentication for admin",
+};
 const AuthPage = () => {
   return (
     <div className="w-4/5 lg:w-1/2 mx-auto">

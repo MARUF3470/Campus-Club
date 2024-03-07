@@ -1,5 +1,8 @@
 import React from "react";
-
+export const metadata = {
+  title: "Member Registration",
+  description: "Member Registration page for new members of the club",
+};
 const MemberRegistration = () => {
   return (
     <div className="w-[95%] mx-auto">
@@ -47,31 +50,16 @@ const MemberRegistration = () => {
           </select>
         </div>
         <div>
-          <h4 className="text-sm mt-2">Want to take the Club T-shirt?</h4>
-          <div className="w-1/2 lg:w-1/6">
-            <div className="form-control">
-              <label className="label cursor-pointer">
-                <span className="label-text">Yes</span>
-                <input
-                  type="radio"
-                  name="radio-10"
-                  className="radio checked:bg-blue-500"
-                  checked
-                />
-              </label>
-            </div>
-            <div className="form-control">
-              <label className="label cursor-pointer">
-                <span className="label-text">No</span>
-                <input
-                  type="radio"
-                  name="radio-10"
-                  className="radio checked:bg-red-500"
-                  checked
-                />
-              </label>
-            </div>
-          </div>
+          <select className="select select-bordered w-fit">
+            <option disabled selected>
+              T-shirt Size
+            </option>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+            <option>XL</option>
+            <option>2XL</option>
+          </select>
         </div>
         <div className="flex justify-center items-center">
           <input

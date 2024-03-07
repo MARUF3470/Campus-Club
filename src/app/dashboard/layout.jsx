@@ -1,7 +1,10 @@
 import Link from "next/link";
 import React from "react";
 import DashboardLogoutBtn from "../components/Dashboard/DashboardLogoutBtn";
-
+export const metadata = {
+  title: "Dashboard",
+  description: "Dashboard to handle capmus events",
+};
 const layout = ({ children }) => {
   return (
     <div className="w-[95%] mx-auto">
