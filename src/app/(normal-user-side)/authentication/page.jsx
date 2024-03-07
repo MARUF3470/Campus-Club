@@ -6,9 +6,9 @@ const AuthPage = () => {
   return (
     <div className="w-4/5 lg:w-1/2 mx-auto">
       <h4 className="text-2xl text-center font-medium my-5">
-        This page is only for Admin other people are restricted.
+        This page is only for Admin, other people are restricted.
       </h4>
-      <div role="tablist" className="tabs tabs-lifted">
+      {/* <div role="tablist" className="tabs tabs-lifted">
         <input
           type="radio"
           name="my_tabs_2"
@@ -37,7 +37,8 @@ const AuthPage = () => {
         >
           <Registration />
         </div>
-      </div>
+      </div> */}
+      <Login />
     </div>
   );
 };

@@ -1,11 +1,15 @@
 import Link from "next/link";
 import React from "react";
+import DashboardLogoutBtn from "../components/Dashboard/DashboardLogoutBtn";
 
 const layout = ({ children }) => {
   return (
     <div className="w-[95%] mx-auto">
       <div className="grid grid-cols-5 gap-4">
         <div className="bg-lime-300 col-span-2 lg:col-span-1 py-10">
+          <div className="flex justify-end">
+            <DashboardLogoutBtn />
+          </div>
           <h3 className="text-center text-xl font-medium mb-10">Dashboard</h3>
           <div className="flex flex-col">
             <Link href="/dashboard/add-event" className="btn btn-outline">
