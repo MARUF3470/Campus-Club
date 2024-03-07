@@ -33,3 +33,21 @@ export const POST = async (req) => {
         });
     }
 }
+
+export const GET = async () => {
+    try {
+        const events = await db.event.findMany({
+            orderBy: {
+                date: 'asc',
+            }
+        })
+        return NextResponse.json({
+            status: 200,
+            data: events,
+        });
+    } catch (error) {
+        return NextResponse.json(
+            { status: 400, errors: error.messages }
+        );
+    }
+}
