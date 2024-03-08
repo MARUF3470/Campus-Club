@@ -21,11 +21,12 @@ const EventListComponent = () => {
               <th>Title & Location</th>
               <th>Description</th>
               <th>Date</th>
-              <th></th>
+              <th>Update</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
-            {events?.data.map((event) => (
+            {events?.data?.map((event) => (
               <SingleEvent key={event.id} event={event} />
             ))}
           </tbody>

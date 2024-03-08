@@ -10,11 +10,20 @@ const useEvents = () => {
     mutate,
   } = useSWR("/api/user/events", fetcher);
 
+  const deleteEvent = async (id) => {
+    await fetch(`/api/user/events/${id}`, {
+      method: "DELETE",
+    });
+    // After deletion, re-fetch the data to update the UI
+    mutate();
+  };
+
   return {
     events,
     error,
     isLoading,
     isValidating,
+    deleteEvent,
     mutate,
   };
 };

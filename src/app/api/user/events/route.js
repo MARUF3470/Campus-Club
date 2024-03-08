@@ -38,7 +38,7 @@ export const GET = async () => {
     try {
         const events = await db.event.findMany({
             orderBy: {
-                date: 'asc',
+                date: 'desc',
             }
         })
         return NextResponse.json({
@@ -51,3 +51,4 @@ export const GET = async () => {
         );
     }
 }
+
