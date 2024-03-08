@@ -1,10 +1,15 @@
+import MemberListComponent from "@/app/components/sharedComponents/MemberListComponent";
 import React from "react";
 export const metadata = {
   title: "Member Management",
   description: "Member Management to capmus club",
 };
 const MemberManagementPage = () => {
-  return <div>Member management page</div>;
+  return (
+    <div>
+      <MemberListComponent />
+    </div>
+  );
 };
 
 export default MemberManagementPage;
