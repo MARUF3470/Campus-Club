@@ -1,7 +1,9 @@
 import React from "react";
+import useMembers from "../../../hooks/useMembers";
+import toast from "react-hot-toast";
 
-const SingleMember = ({ member }) => {
-  console.log(member);
+const SingleMember = ({ member, path }) => {
+  const { isLoading, deleteMember } = useMembers();
   return (
     <tr>
       <th>{member.id}</th>
@@ -27,9 +29,19 @@ const SingleMember = ({ member }) => {
           <button className="btn btn-xs btn-disabled">Paid</button>
         )}
       </td>
-      <td className="flex justify-center items-center">
-        <button className="btn-circle btn-outline btn-xs btn">X</button>
-      </td>
+      {path.includes("member-management") && (
+        <td>
+          <button
+            className="btn-circle btn-outline btn-xs btn"
+            onClick={() => {
+              toast.success("Member Deleted.");
+              deleteMember(member.id);
+            }}
+          >
+            X
+          </button>
+        </td>
+      )}
     </tr>
   );
 };

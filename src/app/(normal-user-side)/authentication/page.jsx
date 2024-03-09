@@ -1,5 +1,4 @@
-import Login from "@/app/components/authComponents/Login";
-import Registration from "@/app/components/authComponents/Registration";
+import Login from "../../components/authComponents/Login";
 import React from "react";
 export const metadata = {
   title: "Authentication",

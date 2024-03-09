@@ -1,9 +1,13 @@
 "use client";
 import React from "react";
-import useMembers from "@/hooks/useMembers";
 import SingleMember from "./SingleMember";
+import { usePathname } from "next/navigation";
+import useMembers from "../../../hooks/useMembers";
+import { Toaster } from "react-hot-toast";
 const MemberListComponent = () => {
   const { isLoading, mutate, members, isValidating } = useMembers();
+  const path = usePathname();
+  console.log("------>", path);
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -14,6 +18,7 @@ const MemberListComponent = () => {
   console.log(members);
   return (
     <div className="overflow-x-auto">
+      <Toaster />
       <table className="table">
         <thead>
           <tr>
@@ -26,12 +31,12 @@ const MemberListComponent = () => {
             <th>T-Shirt Size</th>
             <th>Registration Fee</th>
             <th>T-shirt Fee</th>
-            <th>Delete Member</th>
+            {path.includes("member-management") && <th>Delete Member</th>}
           </tr>
         </thead>
         <tbody>
           {members?.data?.map((member) => (
-            <SingleMember key={member.id} member={member} />
+            <SingleMember key={member.id} member={member} path={path} />
           ))}
         </tbody>
       </table>

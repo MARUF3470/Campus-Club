@@ -1,4 +1,4 @@
-import AddMemberComponent from "@/app/components/MemberRegistrationComponent/AddMemberComponent";
+import AddMemberComponent from "../../components/MemberRegistrationComponent/AddMemberComponent";
 import React from "react";
 export const metadata = {
   title: "Member Registration",

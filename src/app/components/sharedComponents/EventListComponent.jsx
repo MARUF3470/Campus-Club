@@ -1,8 +1,10 @@
 "use client";
-import useEvents from "@/hooks/useEvents";
+import { usePathname } from "next/navigation";
+import useEvents from "../../../hooks/useEvents";
 import SingleEvent from "./SingleEvent";
 
 const EventListComponent = () => {
+  const path = usePathname();
   const { isLoading, mutate, events, isValidating } = useEvents();
   if (isLoading) {
     return (
@@ -21,13 +23,13 @@ const EventListComponent = () => {
               <th>Title & Location</th>
               <th>Description</th>
               <th>Date</th>
-              <th>Update</th>
-              <th>Delete</th>
+              {path.includes("event-list") && <th>Update</th>}
+              {path.includes("event-list") && <th>Delete</th>}
             </tr>
           </thead>
           <tbody>
             {events?.data?.map((event) => (
-              <SingleEvent key={event.id} event={event} />
+              <SingleEvent key={event.id} event={event} path={path} />
             ))}
           </tbody>
         </table>

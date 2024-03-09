@@ -1,9 +1,9 @@
-import useEvents from "@/hooks/useEvents";
 import Image from "next/image";
 import React from "react";
 import toast, { Toaster } from "react-hot-toast";
+import useEvents from "../../../hooks/useEvents";
 
-const SingleEvent = ({ event }) => {
+const SingleEvent = ({ event, path }) => {
   const { isLoading, error, deleteEvent } = useEvents();
   <Toaster />;
   return (
@@ -35,20 +35,25 @@ const SingleEvent = ({ event }) => {
         <br />
       </td>
       <td>{event.date}</td>
-      <th>
-        <button className="btn btn-ghost btn-xs btn-outline">Update</button>
-      </th>
-      <th>
-        <button
-          onClick={() => {
-            deleteEvent(event.id);
-            toast.success("Event Deleted");
-          }}
-          className="btn btn-error btn-xs btn-circle btn-outline"
-        >
-          X
-        </button>
-      </th>
+      {path.includes("event-list") && (
+        <th>
+          <button className="btn btn-ghost btn-xs btn-outline">Update</button>
+        </th>
+      )}
+
+      {path.includes("event-list") && (
+        <th>
+          <button
+            onClick={() => {
+              deleteEvent(event.id);
+              toast.success("Event Deleted");
+            }}
+            className="btn btn-error btn-xs btn-circle btn-outline"
+          >
+            X
+          </button>
+        </th>
+      )}
     </tr>
   );
 };

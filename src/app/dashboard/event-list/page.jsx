@@ -1,5 +1,5 @@
 import React from "react";
-import EventListComponent from "@/app/components/Dashboard/EventListComponent";
+import EventListComponent from "../../components/sharedComponents/EventListComponent";
 export const metadata = {
   title: "Event List",
   description: "Event List of all campus events",

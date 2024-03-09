@@ -1,5 +1,5 @@
 import React from "react";
-import img from "@/app/assets/3.jpg";
+import img from "../../assets/3.jpg";
 import Image from "next/image";
 
 const Banner = () => {
@@ -11,7 +11,6 @@ const Banner = () => {
         alt="Maruf Hossain "
         placeholder="blur"
         className="mx-auto rounded-3xl"
-        sizes="100vw"
       />
       <div className="relative -top-32 lg:-top-72 ">
         <h1 className="text-center  text-xl lg:text-4xl font-bold">

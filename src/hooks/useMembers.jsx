@@ -10,7 +10,7 @@ const useMembers = () => {
     mutate,
   } = useSWR("/api/members", fetcher);
 
-  const deleteEvent = async (id) => {
+  const deleteMember = async (id) => {
     await fetch(`/api/members/${id}`, {
       method: "DELETE",
     });
@@ -22,7 +22,7 @@ const useMembers = () => {
     error,
     isLoading,
     isValidating,
-    deleteEvent,
+    deleteMember,
     mutate,
   };
 };

@@ -1,7 +1,8 @@
 import { join } from "path";
 import { rmSync } from "fs";
-import db from "@/lib/db";
+
 import { NextResponse } from "next/server";
+import db from "../../../../../lib/db";
 
 export const DELETE = async (req, { params }) => {
     const findEvent = await db.event.findUnique({

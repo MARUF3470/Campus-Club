@@ -1,4 +1,4 @@
-import AddEventComponent from "@/app/components/Dashboard/AddEventComponent";
+import AddEventComponent from "../../components/Dashboard/AddEventComponent";
 
 import React from "react";
 

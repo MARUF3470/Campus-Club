@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import img from "@/app/assets/favicon.png";
+import img from "../assets/favicon.png";
 const layout = ({ children }) => {
   const menu = (
     <>

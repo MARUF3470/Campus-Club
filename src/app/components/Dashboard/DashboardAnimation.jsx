@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Lottie from "lottie-react";
-import animation from "@/app/assets/Animation - 1709708041926.json";
+import animation from "../../assets/Animation - 1709708041926.json";
 export const metadata = {
   title: "Dashbord",
   description: "Dashbord to handle capmus events",

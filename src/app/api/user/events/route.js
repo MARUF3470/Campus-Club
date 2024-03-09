@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { join } from "path";
 import { writeFile } from "fs/promises";
-import db from "@/lib/db";
+import db from "../../../../lib/db";
 export const POST = async (req) => {
     const data = await req.formData()
     const title = await data.get('title')

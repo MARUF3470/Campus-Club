@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import { FcAddImage } from "react-icons/fc";
-import ImagePreviewCart from "@/app/components/Dashboard/ImagePreviewCart";
+import ImagePreviewCart from "../../components/Dashboard/ImagePreviewCart";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";

@@ -1,4 +1,4 @@
-import MemberListComponent from "@/app/components/sharedComponents/MemberListComponent";
+import MemberListComponent from "../../components/sharedComponents/MemberListComponent";
 import React from "react";
 export const metadata = {
   title: "Member Management",
