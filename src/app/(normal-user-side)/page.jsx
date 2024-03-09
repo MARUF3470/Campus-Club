@@ -15,7 +15,7 @@ const HomePage = () => {
       </div>
       <div className="border rounded-3xl px-5 h-[500px]">
         <h4 className="text-center my-10">Upcomming Events</h4>
-        <div className="h-[400px] overflow-y-auto scrollable-component mb-5">
+        <div className="h-96 overflow-y-auto scrollable-component mb-5">
           <EventListComponent />
         </div>
       </div>

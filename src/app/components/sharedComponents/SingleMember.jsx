@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import useMembers from "../../../hooks/useMembers";
 import toast from "react-hot-toast";
 
-const SingleMember = ({ member, path }) => {
+const SingleMember = ({
+  member,
+  path,
+  openModalForRegistrationFee,
+  openModalForShirtFee,
+}) => {
   const { isLoading, deleteMember } = useMembers();
   return (
     <tr>
@@ -13,18 +18,42 @@ const SingleMember = ({ member, path }) => {
       <td>{member.email}</td>
       <td>{member.membershipType.toUpperCase()}</td>
       <td>{member.collegeYear.toUpperCase()}</td>
-      <td>{member.collegeYear.toUpperCase()}</td>
       <td>{member.major.toUpperCase()}</td>
+      <td>{member.shirtSize.toUpperCase()}</td>
       <td>
         {member.Payment[0]?.membershipFee === "not-paid" ? (
-          <button className="btn btn-xs btn-outline">Pending</button>
+          <button
+            className="btn btn-xs btn-outline"
+            onClick={() =>
+              openModalForRegistrationFee({
+                id: member.id,
+                email: member.email,
+                message: "Do you want to pay for the Registration fee?",
+                amount: 50,
+              })
+            }
+          >
+            Pending
+          </button>
         ) : (
           <button className="btn btn-xs btn-disabled">Paid</button>
         )}
       </td>
       <td>
         {member.Payment[0]?.tShirtFee === "not-paid" ? (
-          <button className="btn btn-xs btn-outline">Pending</button>
+          <button
+            onClick={() =>
+              openModalForShirtFee({
+                id: member.id,
+                email: member.email,
+                message: "Do you want to pay for the shirt fee?",
+                amount: 20,
+              })
+            }
+            className="btn btn-xs btn-outline"
+          >
+            Pending
+          </button>
         ) : (
           <button className="btn btn-xs btn-disabled">Paid</button>
         )}

@@ -15,7 +15,7 @@ const EventListComponent = () => {
   }
   return (
     <div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto h-96">
         <table className="table">
           <thead>
             <tr>
