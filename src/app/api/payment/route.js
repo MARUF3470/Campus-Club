@@ -35,7 +35,7 @@ export const POST = async (req) => {
             status: 200,
             body: {
                 message: "Payment successful",
-                stripePaymentID: paymentIntent?.id,
+                clientSecret: paymentIntent.client_secret,
             }
         })
     } catch (error) {

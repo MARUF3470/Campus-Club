@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import useMembers from "../../../hooks/useMembers";
 import toast from "react-hot-toast";
+import Link from "next/link";
 
-const SingleMember = ({
-  member,
-  path,
-  openModalForRegistrationFee,
-  openModalForShirtFee,
-}) => {
+const SingleMember = ({ member, path }) => {
   const { isLoading, deleteMember } = useMembers();
   return (
     <tr>
@@ -22,40 +18,44 @@ const SingleMember = ({
       <td>{member.shirtSize.toUpperCase()}</td>
       <td>
         {member.Payment[0]?.membershipFee === "not-paid" ? (
-          <button
-            className="btn btn-xs btn-outline"
-            onClick={() =>
-              openModalForRegistrationFee({
+          <Link
+            href={{
+              pathname: "/payment",
+              query: {
                 id: member.id,
                 email: member.email,
+                name: member.fName,
                 message: "Registration fee",
                 amount: 50,
                 paymentId: member.Payment[0].id,
-              })
-            }
+              },
+            }}
+            className="btn btn-xs btn-outline"
           >
             Pending
-          </button>
+          </Link>
         ) : (
           <button className="btn btn-xs btn-disabled">Paid</button>
         )}
       </td>
       <td>
         {member.Payment[0]?.tShirtFee === "not-paid" ? (
-          <button
-            onClick={() =>
-              openModalForShirtFee({
+          <Link
+            href={{
+              pathname: "/payment",
+              query: {
                 id: member.id,
                 email: member.email,
+                name: member.fName,
                 message: "T-shirt fee",
                 amount: 20,
                 paymentId: member.Payment[0].id,
-              })
-            }
+              },
+            }}
             className="btn btn-xs btn-outline"
           >
             Pending
-          </button>
+          </Link>
         ) : (
           <button className="btn btn-xs btn-disabled">Paid</button>
         )}
