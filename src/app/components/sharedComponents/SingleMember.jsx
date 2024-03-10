@@ -28,8 +28,9 @@ const SingleMember = ({
               openModalForRegistrationFee({
                 id: member.id,
                 email: member.email,
-                message: "Do you want to pay for the Registration fee?",
+                message: "Registration fee",
                 amount: 50,
+                paymentId: member.Payment[0].id,
               })
             }
           >
@@ -46,8 +47,9 @@ const SingleMember = ({
               openModalForShirtFee({
                 id: member.id,
                 email: member.email,
-                message: "Do you want to pay for the shirt fee?",
+                message: "T-shirt fee",
                 amount: 20,
+                paymentId: member.Payment[0].id,
               })
             }
             className="btn btn-xs btn-outline"
