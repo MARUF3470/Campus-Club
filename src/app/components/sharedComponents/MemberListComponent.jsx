@@ -24,8 +24,11 @@ const MemberListComponent = () => {
   return (
     <div>
       <Toaster />
-
-      <div className="overflow-x-auto h-96">
+      <div
+        className={`${
+          path.includes("member-management") ? "" : "overflow-x-auto h-96"
+        }`}
+      >
         <table className="table">
           <thead>
             <tr>

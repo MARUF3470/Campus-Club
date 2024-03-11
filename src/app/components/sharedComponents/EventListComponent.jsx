@@ -15,7 +15,13 @@ const EventListComponent = () => {
   }
   return (
     <div>
-      <div className="overflow-x-auto h-96">
+      <div
+        className={`${
+          path.includes("event-list") || path.includes("yearly-events")
+            ? ""
+            : "overflow-x-auto h-96"
+        }`}
+      >
         <table className="table">
           <thead>
             <tr>

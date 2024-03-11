@@ -1,9 +1,19 @@
 "use client";
+import emailjs from "@emailjs/browser";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-const CheckoutForm = ({ paymentId, amount, message, email }) => {
+import useMembers from "../../../hooks/useMembers";
+const CheckoutForm = ({
+  paymentId,
+  amount,
+  message,
+  email,
+  name,
+  setStripeID,
+}) => {
   const [loading, setLoading] = useState(false);
+  const { updatePayment, mutate } = useMembers();
   const stripe = useStripe();
   const elements = useElements();
   const [clientSecret, setClientSecret] = useState("");
@@ -90,8 +100,15 @@ const CheckoutForm = ({ paymentId, amount, message, email }) => {
     }
     setLoading(false);
     if (paymentIntent?.status === "succeeded") {
+      const response = updatePayment({
+        id: paymentId,
+        message,
+        stripeID: paymentIntent.id,
+      });
+
       toast.success(paymentIntent?.id);
       setTransactionID(paymentIntent?.id);
+      setStripeID(paymentIntent?.id);
     }
   };
   return (

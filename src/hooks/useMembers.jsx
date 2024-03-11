@@ -16,6 +16,13 @@ const useMembers = () => {
     });
     mutate();
   };
+  const updatePayment = async ({ id, message, stripeID }) => {
+    await fetch(`/api/payment`, {
+      method: "PUT",
+      body: JSON.stringify({ id, message, stripeID }),
+    });
+    mutate();
+  };
 
   return {
     members,
@@ -23,6 +30,7 @@ const useMembers = () => {
     isLoading,
     isValidating,
     deleteMember,
+    updatePayment,
     mutate,
   };
 };
