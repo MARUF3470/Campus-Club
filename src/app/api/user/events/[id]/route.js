@@ -10,7 +10,7 @@ export const DELETE = async (req, { params }) => {
             id: Number(params?.id),
         }
     })
-    console.log(findEvent);
+
     if (!findEvent) {
         return NextResponse.json({ status: 400, message: 'Bad Request' })
     }

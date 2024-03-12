@@ -16,7 +16,7 @@ const AddEventComponent = () => {
   } = useForm();
   const router = useRouter();
   const [selectedDate, setSelectedDate] = useState(new Date());
-  //   console.log(selectedDate.toLocaleString());
+
   const [previewUrl, setPreviewUrl] = useState();
   const imageRef = useRef(null);
   const [image, setimage] = useState(null);

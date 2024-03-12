@@ -19,7 +19,6 @@ const MemberListComponent = () => {
       </div>
     );
   }
-  console.log(members);
 
   return (
     <div>

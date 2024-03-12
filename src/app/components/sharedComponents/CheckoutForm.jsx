@@ -1,5 +1,4 @@
 "use client";
-import emailjs from "@emailjs/browser";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
@@ -26,7 +25,6 @@ const CheckoutForm = ({
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.clientSecret);
         setClientSecret(data.clientSecret);
       });
   }, [amount]);
@@ -105,6 +103,20 @@ const CheckoutForm = ({
         message,
         stripeID: paymentIntent.id,
       });
+
+      const sendEmail = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          message,
+          stripeID: paymentIntent.id,
+          name,
+        }),
+      });
+      const data = await sendEmail.json();
 
       toast.success(paymentIntent?.id);
       setTransactionID(paymentIntent?.id);

@@ -8,10 +8,10 @@ const PaymentPage = ({ searchParams }) => {
   const stripePromise = loadStripe(
     process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
   );
-  console.log(searchParams);
+
   const { id, email, name, message, amount, paymentId } = searchParams;
   const [stripeID, setStripeID] = useState();
-  console.log("sdfsdfsdfad", amount);
+
   return (
     <div className="w-1/3 mx-auto">
       <h6 className="text-md font-semibold mb-3">Hello {name}</h6>

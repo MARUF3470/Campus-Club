@@ -4,7 +4,7 @@ import db from "../../../lib/db";
 export const PUT = async (req) => {
     const body = await req.json()
     const { id, stripeID, message } = body
-    console.log(id, message, stripeID);
+
     try {
 
         // Return a success response

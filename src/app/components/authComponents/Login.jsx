@@ -16,7 +16,7 @@ const Login = () => {
       password: data.password,
       redirect: false,
     });
-    console.log(signInData);
+
     if (signInData.error) {
       toast.error(signInData.error);
     } else {

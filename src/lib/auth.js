@@ -26,7 +26,7 @@ export const authOptions = {
                 const existingUser = await db.user.findUnique({
                     where: { email: credentials.email }
                 })
-                //console.log('dasdasdasd', existingUser);
+
                 if (!existingUser) {
                     throw new Error('No user found with this email')
                 }

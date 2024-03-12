@@ -12,7 +12,6 @@ const Registration = () => {
   } = useForm();
   const router = useRouter();
   const onSubmit = async (data) => {
-    console.log(data);
     if (data.password !== data.cpassword) {
       return toast.error("Confirm Password does not match with password");
     }
