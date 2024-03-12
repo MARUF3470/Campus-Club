@@ -9,7 +9,7 @@ const layout = ({ children }) => {
   return (
     <div className="w-[95%] mx-auto">
       <div className="grid grid-cols-5 gap-4">
-        <div className="bg-lime-300 col-span-2 lg:col-span-1 py-10">
+        <div className="bg-lime-300 col-span-2 lg:col-span-1 min-h-screen py-10">
           <div className="flex justify-end">
             <DashboardLogoutBtn />
           </div>

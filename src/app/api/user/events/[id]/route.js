@@ -29,9 +29,23 @@ export const DELETE = async (req, { params }) => {
 
 export const PUT = async (req, { params }) => {
     try {
-        const { } = req.json()
+        const { title, description, location, newDate } = await req.json()
+        console.log(title, description, location, newDate, '________________________>');
+
+        await db.event.update({
+            where: {
+                id: Number(params?.id)
+            },
+            data: {
+                title,
+                description,
+                location,
+                date: newDate
+            }
+        })
+        return NextResponse.json({ message: 'Event Updated', status: 200 })
 
     } catch (error) {
-
+        return NextResponse.json({ message: 'Something went wrong', status: 500 })
     }
 }
