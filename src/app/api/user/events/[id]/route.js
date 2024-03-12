@@ -26,3 +26,12 @@ export const DELETE = async (req, { params }) => {
     })
     return NextResponse.json({ status: 200, message: 'Deleted Succesfully' })
 }
+
+export const PUT = async (req, { params }) => {
+    try {
+        const { } = req.json()
+
+    } catch (error) {
+
+    }
+}

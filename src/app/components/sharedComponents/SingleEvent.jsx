@@ -3,7 +3,7 @@ import React from "react";
 import toast, { Toaster } from "react-hot-toast";
 import useEvents from "../../../hooks/useEvents";
 
-const SingleEvent = ({ event, path }) => {
+const SingleEvent = ({ event, path, handleUpdate }) => {
   const { isLoading, error, deleteEvent } = useEvents();
   <Toaster />;
   return (
@@ -37,7 +37,12 @@ const SingleEvent = ({ event, path }) => {
       <td>{event.date}</td>
       {path.includes("event-list") && (
         <th>
-          <button className="btn btn-ghost btn-xs btn-outline">Update</button>
+          <button
+            onClick={() => handleUpdate(event)}
+            className="btn btn-ghost btn-xs btn-outline"
+          >
+            Update
+          </button>
         </th>
       )}
 
